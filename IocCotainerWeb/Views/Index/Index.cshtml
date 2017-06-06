@@ -1,0 +1,26 @@
+﻿@model List<IocCotainerWeb.Interfaces.IIndex>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Description</td>
+            <td>Comments</td>
+        </tr>        
+    </thead>
+    @foreach (IocCotainerWeb.Interfaces.IIndex item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Description</td>
+            <td>@item.Comments</td>
+        </tr>
+
+    }
+</table>
