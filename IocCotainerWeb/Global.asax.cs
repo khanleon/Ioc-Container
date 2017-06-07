@@ -19,7 +19,8 @@ namespace IocCotainerWeb
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-					
+			
+			
 
         }
     }

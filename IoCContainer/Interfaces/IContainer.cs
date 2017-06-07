@@ -1,4 +1,6 @@
-﻿namespace IocContainer.Core
+﻿
+using System;
+namespace IocContainer.Core
 {
     public interface IContainer
     {
@@ -11,5 +13,6 @@
             where C : class;
 
         T Resolve<T>();
+
     }
 }

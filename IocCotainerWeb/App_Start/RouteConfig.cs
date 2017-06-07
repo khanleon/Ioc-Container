@@ -17,18 +17,20 @@ namespace IocCotainerWeb
         public static void RegisterRoutes(RouteCollection routes)
         {
 			
-			IContainer container = new IocContainer.Container();
+			var container = new IocContainer.Container();
+			
+			container.RegisterInstanceType<IndexController, IndexController>();
+
 			container.RegisterInstanceType<IIndex, IndexModel>();
-			IIndex indexModel = container.Resolve<IIndex>();
-			container.RegisterInstanceType<IIndex, IndexModel>();
-			IIndex indexModel2 = container.Resolve<IIndex>();
+			ControllerBuilder.Current.SetControllerFactory(new SimpleIocController(container));
+			
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
                 name: "Default",
-				url: "{controller}/{action}/{index}/{index2}",
-				defaults: new { controller = "Index", action = "Index", index = indexModel, index2 = indexModel2 }//id = UrlParameter.Optional
+				url: "{controller}/{action}/{id}",
+				defaults: new { controller = "Index", action = "Index", id = UrlParameter.Optional }//
             );
 
 			
